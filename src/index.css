@@ -1,0 +1,146 @@
+a {
+  padding: 20px;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+img {
+  border: 1px inset gray;
+}
+video {
+  border: 1px inset gray;
+}
+
+button {
+  font-size: 1.1em;
+  color: white;
+  font-weight: bold;
+  background: green;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  border: 1px solid black;
+  height: 20px;
+  width: 150px;
+  padding: 5px;
+  margin-top: 20px;
+}
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.kuiper-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.kuiper-image {
+  border-radius: 50%;
+  border: 1px inset gray;
+}
+
+.chill {
+}
+
+a:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.titan-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-button {
+  height: 55px;
+  width: 150px;
+}
+
+.k-button {
+  display: inline;
+  font-size: 1em;
+  height: 40px;
+  width: 100px;
+  padding: 5px;
+  margin: 0 5px 20px 5px;
+}
+.t-button {
+  height: 150px;
+  width: 150px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.titan-chill {
+  margin-top: 40px;
+}
+
+.button-holder {
+  height: 100px;
+  width: 100px;
+}
+
+button.mover {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  animation: feeder 4s linear infinite;
+}
+
+@-webkit-keyframes feeder {
+  from {
+    -webkit-transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+@-moz-keyframes feeder {
+  from {
+    -moz-transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+@-o-keyframes feeder {
+  from {
+    -o-transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+@keyframes feeder {
+  from {
+    transform: rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
