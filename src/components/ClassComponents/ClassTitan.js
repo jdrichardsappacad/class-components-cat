@@ -2,7 +2,6 @@ import { Component } from 'react';
 
 import titanChill from '../../assets/titan_chill.jpg';
 import titanHungry from '../../assets/titan_hungry.MOV';
-import titanMad from '../../assets/titan_rage.mp4';
 
 class Titan extends Component {
   constructor() {
@@ -10,7 +9,7 @@ class Titan extends Component {
     this.state = {
       mood: 'CHILL',
       display: 'block',
-      isHungry: true,
+      isHungry: true
     };
   }
 
@@ -37,7 +36,7 @@ class Titan extends Component {
 
           {this.state.mood === 'CHILL' ? (
             <div className='titan-chill'>
-              <img width=' 690' height=' 390' src={titanChill} />
+              <img width=' 690' height=' 390' src={titanChill} alt='titan' />
               <div className='button-holder'>
                 <button
                   style={{ display: this.state.display }}

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 import titanChill from '../../assets/titan_chill.jpg';
 import titanHungry from '../../assets/titan_hungry.MOV';
-import titanMad from '../../assets/titan_rage.mp4';
 
 const FunctionalTitan = () => {
   const [mood, setMood] = useState('CHILL');
@@ -29,7 +28,7 @@ const FunctionalTitan = () => {
 
         {mood === 'CHILL' ? (
           <div className='titan-chill'>
-            <img width='690' height='390' src={titanChill} />
+            <img width='690' height='390' src={titanChill} alt='titan-chill' />
             <div className='button-holder'>
               <button
                 style={{ display: display }}

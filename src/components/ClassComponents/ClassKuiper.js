@@ -7,27 +7,45 @@ class Kuiper extends Component {
   constructor() {
     super();
     this.state = {
+      guessCount: 0,
       guess: '',
-      kuiper: kuiperSleep,
+      kuiper: kuiperSleep
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.guess === 'sleeping') {
-      alert(`You got it! ${prevState.guess.toLocaleUpperCase()}! Congrats`);
-      this.setState({ guess: '' });
+    if (
+      prevState.guessCount !== this.state.guessCount &&
+      this.state.guess !== 'sleeping' &&
+      this.state.guessCount !== 0
+    ) {
+      alert(
+        `Nice try but wrong! You have made ${this.state.guessCount} guess(es) thus far!`
+      );
     }
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     if (this.state.guess === 'sleeping') {
-      this.setState({ kuiper: kuiperHappy, guess: '' });
+      alert(
+        `Congratulations! You got it in ${
+          this.state.guessCount + 1
+        } guess(es) !`
+      );
+      this.setState({
+        kuiper: kuiperHappy,
+        guess: '',
+        guessCount: 0
+      });
     } else if (this.state.guess === '') {
       alert("You didn't choose anything!");
     } else {
-      alert('Nice try, But Wrong! Try again.');
-      this.setState({ kuiper: kuiperSleep, guess: '' });
+      this.setState({
+        kuiper: kuiperSleep,
+        guess: '',
+        guessCount: this.state.guessCount + 1
+      });
     }
   };
 
@@ -35,16 +53,21 @@ class Kuiper extends Component {
     return (
       <>
         <div className='kuiper-container'>
-          <form onSubmit={event => this.onSubmit(event)}>
-            <label>
-              <h1>Enter Kuiper's favorite activity</h1>
-              <input
-                type='text'
-                value={this.state.guess}
-                placeholder='Enter here'
-                onChange={event => this.setState({ guess: event.target.value })}
-              />
-            </label>
+          <form onSubmit={(event) => this.onSubmit(event)}>
+            {this.state.kuiper === kuiperHappy && (
+              <label>
+                <h1>Enter Kuiper's favorite activity</h1>
+
+                <input
+                  type='text'
+                  value={this.state.guess}
+                  placeholder='Enter here'
+                  onChange={(event) =>
+                    this.setState({ guess: event.target.value })
+                  }
+                />
+              </label>
+            )}
             <div>
               <button className='k-button' type='submit'>
                 Guess
@@ -60,7 +83,12 @@ class Kuiper extends Component {
           </form>
 
           <img
-            className='kuiper-image'
+            className={
+              this.state.kuiper === kuiperHappy
+                ? 'kuiper-image rotate'
+                : 'kuiper-image '
+            }
+            alt='kuiper'
             width='450'
             height='450'
             src={this.state.kuiper}

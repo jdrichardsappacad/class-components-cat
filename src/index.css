@@ -1,7 +1,39 @@
+body {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+      217deg,
+      rgba(255, 0, 0, 0.8),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+h1 {
+  text-align: center;
+}
+
 a {
-  padding: 20px;
+  /* margin-top: 50px; */
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 2px;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 2em;
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+  color: black;
+  background: rgb(129, 237, 129);
+}
+
+.active-nav {
+  margin-top: 50px;
+  background: rgb(84, 71, 158);
+  color: peru;
 }
 
 img {
@@ -15,8 +47,10 @@ button {
   font-size: 1.1em;
   color: white;
   font-weight: bold;
-  background: green;
+  background: rgb(39, 193, 39);
+  border: 3px solid rgb(230, 239, 230);
 }
+
 label {
   display: flex;
   flex-direction: column;
@@ -38,11 +72,13 @@ input {
   padding: 5px;
   margin-top: 20px;
 }
+
 .main-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 30px;
   font-family: sans-serif;
 }
 
@@ -56,14 +92,6 @@ input {
 .kuiper-image {
   border-radius: 50%;
   border: 1px inset gray;
-}
-
-.chill {
-}
-
-a:hover {
-  cursor: pointer;
-  color: orange;
 }
 
 .titan-container {
@@ -109,6 +137,29 @@ button.mover {
   animation: feeder 4s linear infinite;
 }
 
+.welcome {
+  font-size: 2em;
+  margin-top: 300px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+
+/* rotate keyframe */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 @-webkit-keyframes feeder {
   from {
     -webkit-transform: rotate(0deg) translateX(150px) rotate(0deg);
@@ -142,5 +193,27 @@ button.mover {
   }
   to {
     transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  a {
+    font-size: 1em;
+  }
+  img {
+    width: 30vh;
+    height: 30vh;
+  }
+  video {
+    width: 285px;
+    height: 161px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .t-button {
+    height: 100px;
+    width: 100px;
   }
 }

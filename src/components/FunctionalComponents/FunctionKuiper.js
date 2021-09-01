@@ -1,45 +1,61 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import kuiperSleep from '../../assets/kuiper_sleep.jpg';
 import kuiperHappy from '../../assets/kuiper_happy.jpg';
 
 const FunctionalKuiper = () => {
+  const countRef = useRef();
+  const prevGuessCount = countRef.current;
   const [guess, setGuess] = useState('');
-  const [finalGuess, setFinalGuess] = useState('');
+  const [guessCount, setGuessCount] = useState(0);
   const [kuiper, setKuiper] = useState(kuiperSleep);
 
   useEffect(() => {
-    if (guess === 'sleeping') {
-      alert(`You got it! ${guess.toLocaleUpperCase()}! Congrats`);
+    countRef.current = guessCount;
+    if (
+      prevGuessCount !== guessCount &&
+      guess !== 'sleeping' &&
+      guessCount !== 0
+    ) {
+      alert(
+        `Nice try but wrong! You have made ${guessCount} guess(es) thus far!`
+      );
     }
-  }, [guess]);
+  }, [guess, prevGuessCount, guessCount]);
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     if (guess === 'sleeping') {
+      alert(`Congratulations! You got it in ${guessCount + 1} guess(es)`);
       setKuiper(kuiperHappy);
+      setGuess('');
+      setGuessCount(0);
     } else if (guess === '') {
       alert("You didn't choose anything!");
     } else {
-      alert('Nice try, But Wrong! Try again.');
+      setKuiper(kuiperSleep);
       setGuess('');
+      setGuessCount(guessCount + 1);
     }
   };
 
   return (
     <>
       <div className='kuiper-container'>
-        <form onSubmit={event => onSubmit(event)}>
-          <label>
-            <h1>Enter Kuiper's favorite activity</h1>
-            <input
-              type='text'
-              value={guess}
-              placeholder='Enter here'
-              onChange={event => setGuess(event.target.value)}
-            />
-          </label>
+        <form onSubmit={(event) => onSubmit(event)}>
+          {kuiper !== kuiperHappy && (
+            <label>
+              <h1>Enter Kuiper's favorite activity</h1>
+              <input
+                type='text'
+                value={guess}
+                placeholder='Enter here'
+                onChange={(event) => setGuess(event.target.value)}
+              />
+            </label>
+          )}
+
           <div>
             <button className='k-button' type='submit'>
               Guess
@@ -54,7 +70,15 @@ const FunctionalKuiper = () => {
           </div>
         </form>
 
-        <img className='kuiper-image' width='450' height='450' src={kuiper} />
+        <img
+          className={
+            kuiper === kuiperHappy ? 'kuiper-image rotate' : 'kuiper-image'
+          }
+          alt='kuiper'
+          width='450'
+          height='450'
+          src={kuiper}
+        />
       </div>
     </>
   );
