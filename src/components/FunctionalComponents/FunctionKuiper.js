@@ -27,12 +27,16 @@ const FunctionalKuiper = () => {
     event.preventDefault();
 
     if (guess === 'sleeping') {
-      alert(`Congratulations! You got it in ${guessCount + 1} guess(es)`);
+      alert(
+        `Congratulations! ${guess.toUpperCase()}! You got it in ${
+          guessCount + 1
+        } guess(es)`
+      );
       setKuiper(kuiperHappy);
       setGuess('');
       setGuessCount(0);
     } else if (guess === '') {
-      alert("You didn't choose anything!");
+      alert("You didn't make a guess!");
     } else {
       setKuiper(kuiperSleep);
       setGuess('');

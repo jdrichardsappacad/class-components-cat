@@ -29,7 +29,7 @@ class Kuiper extends Component {
     event.preventDefault();
     if (this.state.guess === 'sleeping') {
       alert(
-        `Congratulations! You got it in ${
+        `Congratulations! ${this.state.guess.toUpperCase()}! You got it in ${
           this.state.guessCount + 1
         } guess(es) !`
       );
@@ -54,10 +54,9 @@ class Kuiper extends Component {
       <>
         <div className='kuiper-container'>
           <form onSubmit={(event) => this.onSubmit(event)}>
-            {this.state.kuiper === kuiperHappy && (
+            {this.state.kuiper !== kuiperHappy && (
               <label>
                 <h1>Enter Kuiper's favorite activity</h1>
-
                 <input
                   type='text'
                   value={this.state.guess}

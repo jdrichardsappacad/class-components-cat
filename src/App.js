@@ -18,13 +18,13 @@ const App = () => {
         </Route>
 
         <Route path='/titan'>
-          <FunctionalTitan />
-          {/* <Titan /> */}
+          {/* <FunctionalTitan /> */}
+          <Titan />
         </Route>
 
         <Route path='/kuiper'>
-          <FunctionalKuiper />
-          {/* <Kuiper /> */}
+          {/* <FunctionalKuiper /> */}
+          <Kuiper />
         </Route>
       </Switch>
     </div>
